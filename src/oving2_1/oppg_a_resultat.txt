@@ -1,0 +1,5 @@
+Før endring av koden:
+20 epoker
+accuracy 0.9501
+Elapsed time: 48.15452265739441
+
