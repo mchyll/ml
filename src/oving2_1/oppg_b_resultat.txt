@@ -1,0 +1,5 @@
+20 epoker
+AdamOptimizer, learning rate: 0.001
+
+accuracy 0.9808
+Elapsed time: 104.77261805534363

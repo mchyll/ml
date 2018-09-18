@@ -1,0 +1,8 @@
+20 epoker
+AdamOptimizer, learning rate: 0.001
+ReLU etter hvert lag
+Dropout keep_prob: 0.8
+Normaliserer pixelverdier til [0, 1]
+
+accuracy 0.9852
+Elapsed time: 115.9558515548706

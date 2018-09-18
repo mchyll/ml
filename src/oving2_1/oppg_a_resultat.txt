@@ -1,5 +1,10 @@
-Før endring av koden:
 20 epoker
-accuracy 0.9501
-Elapsed time: 48.15452265739441
+AdamOptimizer, learning rate: 0.001
 
+Før endring av koden:
+  accuracy 0.9501
+  Elapsed time: 48.15452265739441
+
+Etter lagt til conv2 og pool2:
+  accuracy 0.9647
+  Elapsed time: 79.11705875396729
