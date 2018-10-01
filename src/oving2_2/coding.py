@@ -7,7 +7,7 @@ def create_coding(feature_values):
     for i, char in enumerate(feature_values):
         encoding_dict[char] = encodings[i]
 
-    return encoding_dict, encodings
+    return encoding_dict
 
 
 def encode_feature(feature, encoding_dict):
@@ -23,6 +23,6 @@ def encode_string(string, charcodes_dict):
 
 
 if __name__ == '__main__':
-    codes, _ = create_coding(' abcdefghijklmnopqrstuvwxyz')
+    codes = create_coding(' abcdefghijklmnopqrstuvwxyz')
     print(codes)
-    print(encode_string("magnus", codes))
+    print(encode_string('test code', codes))

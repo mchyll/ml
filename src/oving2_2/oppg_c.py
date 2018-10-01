@@ -23,8 +23,7 @@ class LongShortTermMemoryModel:
         # Model operations
         lstm, self.out_state = tf.nn.dynamic_rnn(cell, self.x, initial_state=self.in_state)  # lstm has shape: [batch_size, max_time, cell_state_size]
 
-        # Logits, where tf.einsum multiplies a batch of txs matrices (lstm) with W
-        logits = tf.nn.bias_add(tf.matmul(lstm[:, -1, :], W), b)  # b: batch, t: time, s: state, e: encoding
+        logits = tf.nn.bias_add(tf.matmul(lstm[:, -1, :], W), b)
 
         # Predictor
         self.f = tf.nn.softmax(logits)
@@ -80,13 +79,16 @@ if __name__ == '__main__':
         ('many', '\U0000274c')
     ]
 
+    # Find unique characters and emojis in the training data
     alphabet = ''.join(set(''.join([data[0] for data in train_data])))
     emojis = ''.join(set([data[1] for data in train_data]))
 
-    char_encodings, _ = create_coding(alphabet)
-    emoji_encodings, _ = create_coding(emojis)
+    # Create one-hot encodings for the characters and emojis
+    char_encodings = create_coding(alphabet)
+    emoji_encodings = create_coding(emojis)
 
     x_train = [encode_string(data[0], char_encodings) for data in train_data]
     y_train = [encode_feature(data[1], emoji_encodings) for data in train_data]
 
-    train(x_train, y_train, len(alphabet), len(emojis), emojis, encode_string('many cat', char_encodings))
+    train(x_train, y_train, x_encoding_len=len(alphabet), y_encoding_len=len(emojis),
+          out_labels=emojis, word_to_test=encode_string('hatt', char_encodings))
